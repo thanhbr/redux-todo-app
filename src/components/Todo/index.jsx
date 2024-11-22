@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-import todoListSlice from "../TodoList/todoListSlices"
+import todoListSlice from "../TodoList/todoListSlice"
 
 const Todo = ({
     id,
