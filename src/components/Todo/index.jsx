@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { toggleTodoStatus } from '../../redux/actions';
 import { useState } from 'react';
+
+import todoListSlice from "../TodoList/todoListSlice"
 
 const Todo = ({
     id,
@@ -22,7 +23,7 @@ const Todo = ({
 
     const handleToggleTodo = (id) => {
         setChecked(!checked)
-        dispatch(toggleTodoStatus(id))
+        dispatch(todoListSlice.actions.toggleTodoStatus(id))
     }
 
     return (

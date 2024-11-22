@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { priorityFilterChange, searchFilterChange, statusFilterChange } from "../../redux/actions"
 import { filterPrioritySelector } from "../../redux/selectors"
+import filterSlice from "./filtersSlice"
 
 const Filters = () => {
     const [searchText, setSearchText] = useState("")
@@ -14,12 +14,12 @@ const Filters = () => {
 
     const handleSearchTextChange = (e) => {
         setSearchText(e.target.value)
-        dispatch(searchFilterChange(e.target.value))
+        dispatch(filterSlice.actions.searchFilterChange(e.target.value))
     }
 
     const handleStatusChange = (value) => {
         setStatus(value)
-        dispatch(statusFilterChange(value))
+        dispatch(filterSlice.actions.statusFilterChange(value))
     }
 
     const handlePriorityChange = (value) => {
@@ -28,7 +28,7 @@ const Filters = () => {
             ? temp.filter(priority => priority !== value) 
             : [...temp, value]
         setPriority(priority)
-        dispatch(priorityFilterChange(priority))
+        dispatch(filterSlice.actions.priorityFilterChange(priority))
     }
 
     return (
@@ -39,7 +39,7 @@ const Filters = () => {
                         placeholder="Search" 
                         value={searchText}
                         onChange={handleSearchTextChange}
-                        className="border-2 rounded-lg" 
+                        className="border-2 rounded-lg outline-none" 
                 />
             </div>
             <div>

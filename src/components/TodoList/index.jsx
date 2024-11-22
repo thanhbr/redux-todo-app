@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
 import { v4 as uuidv4 } from 'uuid'
 import Todo from "../Todo"
-import { addTodo } from "../../redux/actions"
 import { useState } from "react"
 import { todosRemainingSelector } from "../../redux/selectors"
+import todoListSlice from "./todoListSlice"
 
 const TodoList = () => {
     const [todoName, setTodoName] = useState("")
@@ -14,7 +14,7 @@ const TodoList = () => {
     const dispatch = useDispatch()
 
     const handleAddTodo = () => {
-        dispatch(addTodo({
+        dispatch(todoListSlice.actions.addTodo({
             id: uuidv4(),
             name: todoName,
             priority: priority,
@@ -42,7 +42,7 @@ const TodoList = () => {
             <div className="flex justify-between gap-4">
                 <input 
                     placeholder="Add todo" 
-                    className="border-2 rounded-lg p-2" 
+                    className="border-2 rounded-lg p-2  outline-none" 
                     value={todoName}
                     onChange={handleNameChange}
                 />
