@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import Todo from "../Todo"
 import { useState } from "react"
 import { todosRemainingSelector } from "../../redux/selectors"
-import todoListSlice from "./todoListSlice"
+import todoListSlice from "./todoListSlices"
 
 const TodoList = () => {
     const [todoName, setTodoName] = useState("")
